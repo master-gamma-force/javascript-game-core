@@ -4,7 +4,7 @@
   "description": "Core",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node ./index.js"
   },
   "repository": {
     "type": "git",
@@ -18,11 +18,17 @@
   },
   "homepage": "https://github.com/master-gamma-force/javascript-game-core#readme",
   "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "@types/jest-cli": "^24.3.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2"
   },
   "dependencies": {
-    "jest": "^25.2.4"
+    "jest": "^25.2.4",
+    "jest-cli": "^25.2.4"
+  },
+  "env": {
+    "jest": true
   }
 }
