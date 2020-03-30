@@ -1,9 +1,9 @@
-const runTest = require('./utils/runTests');
+require('jest');
 
-runTest('/mocks/test.js').then((errors) => {
-  if (errors === 0) {
-    console.log('Congratulation you did It');
-  } else {
-    console.log(`You got ${errors} errors`);
-  }
+const test = describe('Test Triangle Area Function', (callback, values, expected) => {
+  test('Calculate Area', () => {
+    expect(callback(...values)).toEqual(expected);
+  });
 });
+
+module.exports = test;
