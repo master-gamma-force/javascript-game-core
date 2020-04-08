@@ -1,10 +1,11 @@
+const testCode = () => {
+  const code = document.getElementById('user_code').value;
+  const worker = new Worker('./workers/worker.js');
+  const data = { code };
+  worker.addEventListener('message', (e) => {
+    alert(e.data.result);
+    worker.terminate();
+  }, false);
 
-const coreTest = (testFunction, templateFunction, userSolution) => {
-  // Security validation 
-  const noVar = /var/g;
-  if (noVar.test(userSolution)) throw new Error('The solution contain var');
-
-  return testFunction(templateFunction, userSolution);
+  worker.postMessage(data);
 };
-
-module.exports = coreTest;
