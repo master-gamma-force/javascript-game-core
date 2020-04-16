@@ -5,53 +5,37 @@ import { assert } from 'chai';
 
 
 self.addEventListener('message', (e) => {
-  const userCode = e.data.code;
-  const testFunction = () => {
-    eval(e.data.test);
-  };
   let result;
 
-  let errors = {
-    type: 'no_errors',
-    errors: {},
-  };
+  let error = {};
+  let step;
+
+  const testFunction = new TestManager(e.data.test.type, e.data.test.expected);
 
   try {
-    userCode.replace("console.log", 'return');
-    result = (() => {
-      // eslint-disable-next-line no-eval
-      eval(userCode);
-    })();
-    testFunction();
+    step = 'load user code';
+    const userCode = e.data.code.replace('console.log', 'return');
+    step = 'eval user code';
+    result = (eval(`() => { ${userCode} }`))();
+    step = 'Test';
+    testFunction.test(result);
   } catch (err) {
-    errors = {
-      type: 'error',
-      errors: err,
+    error = {
+      step,
+      err,
     };
   }
 
-  // self.postMessage(feedback);
-  // let result;
-
-  // let errors = {
-  //   type: 'no_errors',
-  //   errors: {},
-  // };
-
-  // try {
-  //   assert.equal('bar', 'bar');
-  //   result = eval(userCode);
-  //   // assert.deepEqual('bar', 'var');
-  // } catch (error) {
-  //   errors = {
-  //     type: 'error',
-  //     error,
-  //   };
-  // }
-
-
   self.postMessage({
+    error,
     result,
-    errors,
   });
 }, false);
+
+class TestManager {
+  constructor(type, expected) {
+    this.test = (result) => {
+      assert[type](result, expected);
+    };
+  }
+}
