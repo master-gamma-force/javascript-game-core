@@ -11,13 +11,19 @@ self.addEventListener('message', (e) => {
 
   try {
     step = 'load user code';
-    const userCode = e.data.code.replace(/console.log/g, 'return');
+    const userCode = e.data.code.replace(/console.log/g, '');
 
     step = 'run user code';
     const userResult = (eval(`() => { ${userCode} }`))();
 
+    step = 'load test';
+
+    tm.tests.forEach((test) => {
+      test.value = (eval(`() => {${userCode} return ${test.value};}`))();
+    });
+
     step = 'run test';
-    tm.run(userResult);
+    tm.run();
   } catch (err) {
     tm.log.newErr({
       step,

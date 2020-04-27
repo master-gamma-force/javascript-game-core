@@ -28,7 +28,7 @@ console.log(sabePython);`;
 
 export const TEST = [
   {
-    description: 'Test Filter',
+    description: 'Test result',
     type: 'deepEqual',
     value: 'sabePython',
     params: [
@@ -37,5 +37,11 @@ export const TEST = [
         { name: 'Richard', skill: 'Python' },
       ],
     ],
+  },
+  {
+    description: 'Test length',
+    type: 'equal',
+    value: 'sabePython.length',
+    params: [2],
   },
 ];

@@ -41,7 +41,7 @@ class TestManager {
    * Run all test
    * @param {Object[]} values Values to test
    */
-  run(value) {
+  run() {
     if (!this.tests) {
       throw new Error("There isn't test");
     }
@@ -50,7 +50,7 @@ class TestManager {
 
     this.tests.forEach((test) => {
       try {
-        test.test(value);
+        test.test(test.value);
 
         this.log.newLog({
           test: test.description,
