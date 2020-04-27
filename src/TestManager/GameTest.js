@@ -7,10 +7,11 @@ class GameTest {
    * @param {string} type chai method
    * @param {Object[]} params chai params of chai method
    */
-  constructor(description, type, params) {
+  constructor({ description, type, value, params }) {
     this.description = description;
-    this.test = (value) => {
-      assert[type](value, ...params);
+    this.value = value;
+    this.test = (values) => {
+      assert[type](values, ...params);
     };
   }
 }

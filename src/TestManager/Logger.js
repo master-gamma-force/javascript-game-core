@@ -29,6 +29,14 @@ class Logger {
   }
 
   /**
+   * @getter
+   * @returns {Object[]} list of errors
+   */
+  get logs() {
+    return this.log;
+  }
+
+  /**
    * Clean the logger
    */
   clear() {

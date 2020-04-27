@@ -8,22 +8,26 @@ class TestManager {
    * @param {Object[]} dataTest data of test
    * @param {string} dataTest.description description of test
    * @param {String} dataTest.type type chai method
+   * @param {String} dataTest.value chai param value
    * @param {Object[]} dataTest.params chai params of chai method
    */
   constructor(dataTest) {
     if (!dataTest.length) {
       this.tests = null;
     } else {
-      const isNull = dataTest.reduce((acu, cur) => {
-        return acu * Boolean(cur.description) * Boolean(cur.type) * Boolean(cur.params);
-      }, 1);
+      const isNull = !dataTest.reduce((acu, cur) => (acu
+        && cur.description
+        && cur.type
+        && cur.value
+        && cur.params
+      ), true);
 
       if (isNull) {
         this.tests = null;
         throw new Error('Test no have the structure of GameTest class');
       } else {
         try {
-          this.tests = dataTest.map((test) => new GameTest(...test));
+          this.tests = dataTest.map((test) => new GameTest(test));
         } catch (err) {
           throw new Error(`Can't load test: ${err}`);
         }
@@ -37,21 +41,16 @@ class TestManager {
    * Run all test
    * @param {Object[]} values Values to test
    */
-  run(values) {
+  run(value) {
     if (!this.tests) {
       throw new Error("There isn't test");
     }
 
-
-    if (values.length !== this.tests.length) {
-      throw new Error("The values don't  have the same length as test");
-    }
-
     this.log.clear();
 
-    this.tests.forEach((test, idx) => {
+    this.tests.forEach((test) => {
       try {
-        test.test(values(idx));
+        test.test(value);
 
         this.log.newLog({
           test: test.description,

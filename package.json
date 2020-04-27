@@ -4,11 +4,9 @@
   "description": "Core",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "workers:build": "webpack --config ./webpack.config.js --mode production",
-    "workers:start": "webpack-dev-server --config ./webpack.config.js --mode development",
-    "serve": "serve src",
-    "start": "npm run serve"
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "start:dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "serve src"
   },
   "repository": {
     "type": "git",

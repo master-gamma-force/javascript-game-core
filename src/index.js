@@ -1,26 +1,24 @@
-// const test = 'assert.equal(result, "bar")';
+import { TEMPLATE, TEST } from './templates/filter';
 
-const test = {
-  type: 'equal',
-  expected: 'bar',
+document.getElementById('user_code').defaultValue = TEMPLATE;
+
+const callback = (e) => {
+  console.log(e.data.logs);
+  console.log(e.data.errors);
 };
-
-const templeteCode = 'console.log()';
-
-
-document.getElementById('user_code').defaultValue = templeteCode;
 
 const testCode = () => {
   const code = document.getElementById('user_code').value;
-  const worker = new Worker('./workers/worker.bundle.js');
+  const worker = new Worker('worker.bundle.js');
 
-  const data = { code, test };
+  const data = { code, test: TEST };
 
   worker.addEventListener('message', (e) => {
-    console.log('result', e.data.result);
-    console.log('errors', e.data.error);
+    callback(e);
     worker.terminate();
   }, false);
 
   worker.postMessage(data);
 };
+
+document.getElementById('button-evaluar').addEventListener('click', testCode);
