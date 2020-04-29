@@ -28,7 +28,7 @@ console.log(sabePython);`;
 
 export const TEST = [
   {
-    description: 'Test result',
+    description: 'Test content employees know Python',
     type: 'deepEqual',
     value: 'sabePython',
     params: [
@@ -39,7 +39,7 @@ export const TEST = [
     ],
   },
   {
-    description: 'Test length',
+    description: 'Test length of employees know Python',
     type: 'equal',
     value: 'sabePython.length',
     params: [2],

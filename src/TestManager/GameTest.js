@@ -7,7 +7,9 @@ class GameTest {
    * @param {string} type chai method
    * @param {Object[]} params chai params of chai method
    */
-  constructor({ description, type, value, params }) {
+  constructor({
+    description, type, value, params,
+  }) {
     this.description = description;
     this.value = value;
     this.test = (values) => {
