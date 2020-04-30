@@ -113,3 +113,8 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+
+
+# bundles
+src/main.bundle.js
+src/worker.bundle.js
