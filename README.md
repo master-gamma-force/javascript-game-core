@@ -23,3 +23,8 @@ for any change in the workers.js file
 ### `npm run start`
 
 It will start the project in a new server
+
+## Answers
+
+The answers of the tests are in the folder src/expected If you want to test just
+the functionality.
