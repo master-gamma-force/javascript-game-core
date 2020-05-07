@@ -1,8 +1,7 @@
-import { assert } from 'chai';
 import GameTest from './GameTest';
 import Logger from './Logger';
 
-class TestManager {
+export default class TestManager {
   /**
    * Test Manager
    * @param {Object[]} dataTest data of test
@@ -24,7 +23,7 @@ class TestManager {
 
       if (isNull) {
         this.tests = null;
-        throw new Error('Test no have the structure of GameTest class');
+        throw new Error("Test doesn't have the structure of GameTest class");
       } else {
         try {
           this.tests = dataTest.map((test) => new GameTest(test));
@@ -39,11 +38,10 @@ class TestManager {
 
   /**
    * Run all test
-   * @param {Object[]} values Values to test
    */
   run() {
     if (!this.tests) {
-      throw new Error("There isn't test");
+      throw new Error('There are no test');
     }
 
     this.log.clear();
@@ -64,8 +62,5 @@ class TestManager {
         });
       }
     });
-    return !this.errors;
   }
 }
-
-export default TestManager;
