@@ -1,0 +1,43 @@
+{
+  "name": "javascript-game-core",
+  "version": "2.0.0",
+  "description": "Core",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config ./webpack.config.js --mode production",
+    "start:dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "serve src",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/master-gamma-force/javascript-game-core.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/master-gamma-force/javascript-game-core/issues"
+  },
+  "homepage": "https://github.com/master-gamma-force/javascript-game-core#readme",
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-jest": "^26.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "jest": "^26.0.1",
+    "mocha": "^7.1.2",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "serve": "^11.3.0",
+    "webpack": "^4.42.1"
+  },
+  "jest": {
+    "verbose": true
+  }
+}

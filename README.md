@@ -1,2 +1,50 @@
-# javascript-game-core
-Core
+# Core of Javascript Game
+
+This project expose a testing interface in the frontend using workers.
+
+is just a work in progress that will be integrated to https://github.com/master-gamma-force/javascript-game-frontend.
+
+## How It works
+
+The tests will be running in a workers file because We are running the eval
+function, which is very unsafe for systems and the workers are completely
+isolated to the systems, also We're using external libraries in the workers
+file and because the isolation cannot use any import, so is required to generate
+a bundle to run the workers code.
+
+## How to run It
+
+### Install
+
+```bash
+npm install
+```
+
+### Run
+
+### Development
+
+```bash
+npm run start:dev
+```
+
+### Production
+
+```bash
+npm run build
+npm run start
+```
+
+#### `npm run build`
+
+This script generates the bundles for the workers, should generate a new bundle
+for any change in the workers.js file
+
+#### `npm run start`
+
+It will start the project in a new server
+
+## Answers
+
+The answers of the tests are in the folder src/expected If you want to test just
+the functionality.
