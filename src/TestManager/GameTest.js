@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 
-class GameTest {
+export default class GameTest {
   /**
    * Create a new test with chai
    * @param {string} description description of test
@@ -17,5 +17,3 @@ class GameTest {
     };
   }
 }
-
-export default GameTest;
